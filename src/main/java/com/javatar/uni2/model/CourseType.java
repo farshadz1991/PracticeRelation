@@ -13,7 +13,7 @@ public class CourseType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long Id;
     private String title;
     @OneToMany(mappedBy = "courseType")
     private Set<Course> course = new HashSet<Course>();

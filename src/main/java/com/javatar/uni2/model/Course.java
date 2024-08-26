@@ -19,5 +19,6 @@ public class Course {
     private CourseType courseType;
 
 
+
 }
   // 1
