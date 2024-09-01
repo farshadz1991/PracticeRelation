@@ -1,6 +1,9 @@
 package com.javatar.uni2.controller;
 
+import com.javatar.uni2.model.Course;
 import com.javatar.uni2.model.CourseType;
+import com.javatar.uni2.repository.CourseRepository;
+import com.javatar.uni2.repository.CourseTypeRepository;
 import com.javatar.uni2.service.CourseTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +15,11 @@ import java.util.List;
 public class CourseTypeController {
     @Autowired
     private CourseTypeService courseTypeService;
-  //  @Autowired
+    @Autowired
+    private CourseTypeRepository courseTypeRepository;
+    @Autowired
+    private CourseRepository courseRepository;
+    //  @Autowired
   //  private CourseService courseService;
 
     @GetMapping
@@ -42,5 +49,10 @@ public class CourseTypeController {
             return null;
 
 
+    }
+
+    @GetMapping("{id}/course")
+    public List<Course> getAllCourses(@PathVariable("id") long id) {
+        return courseRepository.findByCourseTypeId(id);
     }
 }

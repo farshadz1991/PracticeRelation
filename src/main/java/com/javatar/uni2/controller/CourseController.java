@@ -10,7 +10,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping
+@RequestMapping("course")
 public class CourseController {
 
     @Autowired
@@ -21,9 +21,9 @@ public class CourseController {
         return courseService.getAllCourses();
     }
 
-    @PostMapping
-    public Course addCourse(@RequestBody Course course) {
-        return courseService.insertCourse(course);
+    @PostMapping("{id}/courseType")
+    public Course addCourse(@PathVariable(value = "id") Long id,@RequestBody Course course) {
+        return courseService.insertCourse(id,course);
     }
 
     @DeleteMapping("{id}")

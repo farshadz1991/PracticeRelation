@@ -19,9 +19,9 @@ public class StudentDegreeController {
         return studentDegreeService.getAllStudentDegree();
     }
 
-    @PostMapping
-    public StudentDegree addStudentDegree(@RequestBody StudentDegree studentDegree) {
-        return studentDegreeService.insertStudentDegree(studentDegree);
+    @PostMapping("{id}/degree")
+    public StudentDegree addStudentDegree(@PathVariable(value = "id") Long id, @RequestBody StudentDegree studentDegree) {
+        return studentDegreeService.insertStudentDegree(id, studentDegree);
     }
 
     @DeleteMapping("{id}")

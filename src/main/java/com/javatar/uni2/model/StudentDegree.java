@@ -12,9 +12,9 @@ public class StudentDegree {
     private int id;
     private String title;
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_Id")
+    @MapsId
+    @JoinColumn(name = "student_id")
     private Student student;
-
 
 
 }

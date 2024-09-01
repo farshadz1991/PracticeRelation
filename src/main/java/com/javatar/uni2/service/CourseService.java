@@ -1,7 +1,9 @@
 package com.javatar.uni2.service;
 
 import com.javatar.uni2.model.Course;
+import com.javatar.uni2.model.CourseType;
 import com.javatar.uni2.repository.CourseRepository;
+import com.javatar.uni2.repository.CourseTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ public class CourseService {
 
     @Autowired
     private CourseRepository courseRepository;
+    @Autowired
+    private CourseTypeRepository courseTypeRepository;
 
     public List<Course> getAllCourses() {
         return courseRepository.findAll();
@@ -24,7 +28,9 @@ public class CourseService {
         return courseRepository.findById(id);
     }
 
-    public Course insertCourse(Course course) {
+    public Course insertCourse(Long id,Course course) {
+        CourseType courseType = courseTypeRepository.findById(id).get();
+        course.setCourseType(courseType);
         return courseRepository.save(course);
     }
 

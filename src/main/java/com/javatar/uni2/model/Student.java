@@ -16,12 +16,12 @@ public class Student {
     private String name;
     private String email;
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "studentCourse",
-    joinColumns = @JoinColumn(name = "student_Id"),
-            inverseJoinColumns = @JoinColumn(name = "course_Id"))
+    @JoinTable(name = "student_course",
+    joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
     private Set<Course> courses=new HashSet<>();
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "studentDegree_Id")
-    private StudentDegree studentDegree;
+  //  @OneToOne(cascade = CascadeType.ALL)
+ //   @JoinColumn(name = "student_degree_id", referencedColumnName = "id")
+   // private StudentDegree studentDegree;
 
 }
