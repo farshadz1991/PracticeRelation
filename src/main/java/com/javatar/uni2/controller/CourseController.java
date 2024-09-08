@@ -34,8 +34,8 @@ public class CourseController {
     @PutMapping("{id}")
     public Course updateCourse(@PathVariable("id") long id, @RequestBody Course course) {
 
-        Optional<Course> course1 = courseService.getCourseById(id);
-        if (course1.isPresent()) {
+        Course course1 = courseService.getCourseById(id);
+        if (course1!=null) {
             if (course.getTitle() != null) {
                 course.getTitle();
             }

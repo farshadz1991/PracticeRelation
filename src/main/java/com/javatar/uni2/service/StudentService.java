@@ -23,6 +23,12 @@ public class StudentService {
     public Student getStudentById(Long id){
         return studentRepository.findById(id).get();
     }
+
+
+    public Student getStudentByName(String studentName){
+        return studentRepository.getStudentByName(studentName);
+    }
+
     public Student updateStudent(Student student) {
         return studentRepository.save(student);
     }

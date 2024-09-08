@@ -1,6 +1,7 @@
 package com.javatar.uni2.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -9,11 +10,16 @@ import lombok.Data;
 public class StudentDegree {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
     private String title;
+
+
     @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
     @JoinColumn(name = "student_id")
+    @JsonIgnore
     private Student student;
 
 

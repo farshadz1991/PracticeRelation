@@ -25,12 +25,12 @@ public class StudentDegreeController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteStudentDegree(@PathVariable("id") int id) {
+    public void deleteStudentDegree(@PathVariable("id") Long id) {
         studentDegreeService.deleteStudentDegree(id);
     }
 
     @PutMapping("{id}")
-    public StudentDegree updateStudentDegree(@PathVariable("id") int id, @RequestBody StudentDegree studentDegree) {
+    public StudentDegree updateStudentDegree(@PathVariable("id") Long id, @RequestBody StudentDegree studentDegree) {
         Optional<StudentDegree> stDegree = studentDegreeService.getStudentDegree(id);
         if (stDegree.isPresent()) {
             if (studentDegree.getTitle() != null){

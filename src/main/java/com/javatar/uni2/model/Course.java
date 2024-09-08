@@ -17,6 +17,7 @@ public class Course {
     private String title;
 
     private int unit;
+
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name = "course_type_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)

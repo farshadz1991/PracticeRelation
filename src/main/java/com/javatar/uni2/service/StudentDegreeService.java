@@ -21,17 +21,25 @@ public class StudentDegreeService {
         return studentDegreeRepository.findAll();
     }
 
-    public Optional<StudentDegree> getStudentDegree(int id) {
+    public Optional<StudentDegree> getStudentDegree(Long id) {
         return studentDegreeRepository.findById(id);
     }
 
     public StudentDegree insertStudentDegree(Long id,StudentDegree studentDegree) {
-        Student student = studentRepository.findById(id).get();
-        studentDegree.setStudent(student);
-        return studentDegreeRepository.save(studentDegree);
+        try {
+            Student student = studentRepository.findById(id).get();
+            studentDegree.setStudent(student);
+            return studentDegreeRepository.save(studentDegree);
+        }
+        catch (Exception ex)
+        {
+
+            return null;
+        }
+
     }
 
-    public void deleteStudentDegree(int id) {
+    public void deleteStudentDegree(Long id) {
         studentDegreeRepository.deleteById(id);
     }
 
